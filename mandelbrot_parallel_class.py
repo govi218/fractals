@@ -39,8 +39,9 @@ class Fractal:
             for j in np.arange(-2.0, 2.0, step):
                 iters = self.mandelbrot_process(complex(i,j))
                 if int(iters):
-                    # m_set.append((i,j, iters))
-                    f.write(i+','+j+','+iters)
+                    m_set.append((i,j, iters))
+                    print(i+','+j+','+iters)
+                    # f.write(i+','+j+','+iters)
         f.close()
         return m_set
 

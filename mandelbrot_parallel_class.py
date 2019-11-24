@@ -17,7 +17,7 @@ class Fractal:
     def __init__(self, step):
         self.step = step
 
-    def mandelbrot_process(self, c, boundary=2, max_iterations=256):
+    def mandelbrot_process(self, c, boundary=2, max_iterations=512):
         z = 0+0j
         i = 0
         while np.absolute(z) < np.absolute(boundary):
@@ -41,15 +41,20 @@ class Fractal:
         return m_set
 
     def run(self):
-        step = self.step
-        my_arange = [[-2.0, -1.75, step], [-1.75, -1.5, step], 
-                [-1.5, -1.25, step], [-1.25, -1.0, step], 
-                [-1.0, -0.75, step], [-0.75, -0.5, step], 
-                [-0.5, -0.25, step], [-0.25, 0.0, step], 
-                [0.0, 0.25, step], [0.25, 0.5, step],  
-                [0.5, 0.75, step], [0.75, 1.0, step], 
-                [1.0, 1.25, step], [1.25, 1.5, step],  
-                [1.5, 1.75, step], [1.75, 2.0, step],]
+        def arange_calc(num_cores, step):
+            arange = []
+            arange_step = 4/num_cores
+            for i in range(num_cores):
+                l = []
+                start = i*arange_step - 2
+                end=(i+1)*arange_step - 2
+                l.append(start)
+                l.append(end)
+                l.append(step)
+                arange.append(l)
+            return arange
+
+        my_arange = arange_calc(mp.cpu_count(), self.step)
         pool = mp.Pool()
         # %%time        fractal = Fractal()
         res = pool.map(self.mandelbrot, my_arange)

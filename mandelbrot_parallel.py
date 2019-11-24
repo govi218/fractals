@@ -12,7 +12,7 @@ import pickle as pk
 
 m_set = []
 
-def mandelbrot_process(c, boundary=2, max_iterations=256):
+def mandelbrot_process(c, boundary=2, max_iterations=512):
     z = 0+0j
     i = 0
     while np.absolute(z) < np.absolute(boundary):

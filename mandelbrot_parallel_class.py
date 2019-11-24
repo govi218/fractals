@@ -33,11 +33,14 @@ class Fractal:
         start = my_arange[0]
         end = my_arange[1]
         step = my_arange[2]
+        f = open("m_set.csv", "w")
         for i in np.arange(start, end, step):
             for j in np.arange(-2.0, 2.0, step):
                 iters = self.mandelbrot_process(complex(i,j))
                 if int(iters):
-                    m_set.append((i,j, iters))
+                    # m_set.append((i,j, iters))
+                    f.write((i,j,iters))
+        f.close()
         return m_set
 
     def run(self):

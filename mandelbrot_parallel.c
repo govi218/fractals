@@ -16,7 +16,7 @@
 double boundry;
 int l, m, n; 
 int max_iterations = 512; // how many iteration before one decides c belongs to the set
-static double complex mSet[300000000];
+static float complex mSet[1000000000];
 FILE *f;
 
 
@@ -45,8 +45,8 @@ void main(){
         double complex z, c; // complex number of the from a + b*I
         bool boolVar;
         int k;
-        for(i=-2.0+n;i<=-1.5+n;i=i+0.00001) { // breaking the loop down for 8 threads
-            for(j=-2.0;j<=2.0;j=j+0.00001) { // this loop will not directly participate in multithreading. Only as a result of outer loop participating
+        for(i=-2.0+n;i<=-1.5+n;i=i+0.0001) { // breaking the loop down for 8 threads
+            for(j=-2.0;j<=2.0;j=j+0.0001) { // this loop will not directly participate in multithreading. Only as a result of outer loop participating
                 // printf("%f\n", i);
                 boolVar = false;
                 z = 0.0 + 0.0*I; // initiate the mandelbrot algorithm
@@ -78,7 +78,7 @@ void main(){
     // opening file in writing mode
     f = fopen("mandelbrot.txt", "w");
     
-    for(m=0;m<(300000000);m++) {
+    for(m=0;m<(1000000000);m++) {
         fprintf(f, "%f + i%f\n", creal(mSet[m]), cimag(mSet[m]));
     }
     fclose(f);

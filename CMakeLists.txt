@@ -8,8 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Project name
 project(fractals)
 
-set(SOURCES ${CMAKE_SOURCE_DIR}/main.cpp)
-# set(HEADERS ${CMAKE_SOURCE_DIR}/*.hpp)
+file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_SOURCE_DIR}/include/*.hpp)
 
 # target_link_libraries()
 

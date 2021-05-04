@@ -1,7 +1,8 @@
 #include <iostream>
-#include <thread>
 #include <fstream>
 #include <complex>
+#include <chrono>
+
 
 
 #include "../external/qcustomplot/qcustomplot.h"
@@ -25,7 +26,8 @@ using ComplexDouble = std::complex<double>;
 using FractalSet = std::vector<ComplexDouble>;
 
 int main() {
-    FractalSet m_set = fractals::thread();
+    auto start = std::chrono::high_resolution_clock::now();
+    auto m_set = fractals::thread();
     // std::cout << "{ ";
     // for (auto i : m_set) {
     //     std::cout << i << " ";
@@ -44,6 +46,9 @@ int main() {
     // custom_plot.addGraph();
     // custom_plot.graph(0)->setPen(QPen(Qt::blue)); // line color blue for
     // first graph custom_plot.graph(0)->setBrush(QBrush(QColor(0, 0, 255,20))); // first graph will be filled with translucent blue
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "Runtime is " << duration.count() << " milliseconds" <<std::endl;
     return 0;
 }
     

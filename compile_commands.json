@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/gov/dev/fractals/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtPrintSupport -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/gov/anaconda3/include -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/gov/anaconda3/include -fPIC -std=c++17 -o CMakeFiles/fractals.dir/src/mandelbrot.cpp.o -c /home/gov/dev/fractals/src/mandelbrot.cpp",
+  "file": "/home/gov/dev/fractals/src/mandelbrot.cpp"
+},
+{
+  "directory": "/home/gov/dev/fractals/build/external/qcustomplot",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -I/home/gov/dev/fractals/external/qcustomplot/.. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtCore -isystem /usr/lib/qt/mkspecs/linux-g++ -isystem /usr/include/qt/QtPrintSupport -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/gov/anaconda3/include -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/gov/anaconda3/include -fPIC -std=c++17 -o CMakeFiles/qcustomplot.dir/qcustomplot.cpp.o -c /home/gov/dev/fractals/external/qcustomplot/qcustomplot.cpp",
+  "file": "/home/gov/dev/fractals/external/qcustomplot/qcustomplot.cpp"
+}
+]

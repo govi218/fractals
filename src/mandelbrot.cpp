@@ -30,7 +30,7 @@ int main() {
     auto start = std::chrono::high_resolution_clock::now();
     // intiate and generate m_set
     auto m_set = fractals::thread();
-    std::cout << "m_set size is: " << m_set.size() << std::endl;
+    std::cout << "m_set size is: " << m_set.size()*1.0 << std::endl;
     // std::cout << "{ ";
     // for (auto i : m_set) {
     //     std::cout << i << " ";
@@ -38,12 +38,12 @@ int main() {
     // std::cout << "}" << std::endl;
 
     // To output the set (vector m_set) into a text file
-    std::ofstream file;
-	file.open("m_set.txt");
-	for(int i=0;i<m_set.size();++i){
-		file<<m_set[i]<<" ";
-	}
-	file.close();
+    // std::ofstream file;
+	// file.open("m_set.txt");
+	// for(int i=0;i<m_set.size();++i){
+	// 	file<<m_set[i]<<" ";
+	// }
+	// file.close();
 
     // QCustomPlot custom_plot;
     // custom_plot.addGraph();

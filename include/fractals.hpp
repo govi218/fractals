@@ -50,30 +50,26 @@ void mandelbrot(double i_start_val, double i_end_val, double j_start_val, double
 
 FractalSet thread() {
     ComplexDouble zero_elm(0, 0);
-    // // Pre loop thread setup
-    int num_threads = omp_get_max_threads();
+    int num_threads = omp_get_max_threads(); // Pre loop thread setup
     std::cout << "Number of threads: " << num_threads << std::endl;
     omp_set_num_threads(omp_get_max_threads());
-    int break_thread = 1;
     double res = 0.0002;
-    // Complexity calc: (4/res)^2/(break_thread*num_threads)
+    /* Complexity calc: (4/res)^2/(num_threads * num_threads)
+    Total steps to take = Max number possible points to evaluate: (4/res)^2 */
     std::cout << "Each grid has "
               << pow((4 / res), 2) / (num_threads * num_threads) << " points."
               << std::endl;
-    // Total steps to take = Max number possible points to evaluate: (4/res)^2
     std::cout << "Total points to investigate: " << pow(4 / res, 2)
               << std::endl;
-// #pragma omp parallel
+    /* Loop will create a square grid of num_threads*num_threads.
+    Each thread will handle one square grid. When done picks up the next available square.
+    The square grids are allocated to threads dynamically (not pre-assigned). */
     #pragma omp parallel for schedule(dynamic)
     for (int t = 0; t < num_threads * num_threads; t++) {
         double i_start_here = -2.0 + (floor(t / num_threads) * 4) /num_threads;
-        double i_end_here = -2.0 + ((floor(t / num_threads) + 1) * 4) /num_threads;
+        double i_end_here = -2.0 + ((floor(t / num_threads) + 1) * 4) /num_threads; 
         double j_start_here = -2.0 + ((t % num_threads) * 4) /num_threads;
         double j_end_here = -2.0 + (((t % num_threads) + 1) * 4)/num_threads;
-        // int thread_num = omp_get_thread_num();
-        // #pragma omp critical
-        // std::cout << "Thread " << thread_num << " is handling t = " << t <<
-        // std::endl;
         mandelbrot(i_start_here, i_end_here, j_start_here, j_end_here, res);
     }
     #pragma omp critical

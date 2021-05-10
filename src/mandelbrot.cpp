@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <complex>
+#include <chrono>
 
-#include<fstream>
+
 
 #include "../external/qcustomplot/qcustomplot.h"
 
@@ -19,26 +22,37 @@
 
 #include "../include/fractals.hpp"
 
+using ComplexDouble = std::complex<double>;
+using FractalSet = std::vector<ComplexDouble>;
+
 int main() {
-    auto m_set = fractals::mandelbrot();
-    std::cout << "{ ";
-    for (auto i : m_set) {
-        std::cout << i << " ";
-    }
-    std::cout << "}" << std::endl;
+    // Setting up compilation time
+    auto start = std::chrono::high_resolution_clock::now();
+    // intiate and generate m_set
+    auto m_set = fractals::thread();
+    std::cout << "m_set size is: " << m_set.size()*1.0 << std::endl;
+    // std::cout << "{ ";
+    // for (auto i : m_set) {
+    //     std::cout << i << " ";
+    // }
+    // std::cout << "}" << std::endl;
 
-
-// To output the set (vector m_set) into a text file
-    std::ofstream file;
-	file.open("m_set.txt");
-	for(int i=0;i<m_set.size();++i){
-		file<<m_set[i]<<" ";
-	}
-	file.close();
+    // To output the set (vector m_set) into a text file
+    // std::ofstream file;
+	// file.open("m_set.txt");
+	// for(int i=0;i<m_set.size();++i){
+	// 	file<<m_set[i]<<" ";
+	// }
+	// file.close();
 
     // QCustomPlot custom_plot;
     // custom_plot.addGraph();
     // custom_plot.graph(0)->setPen(QPen(Qt::blue)); // line color blue for
     // first graph custom_plot.graph(0)->setBrush(QBrush(QColor(0, 0, 255,20))); // first graph will be filled with translucent blue
+    // Calculate compile time
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+    std::cout << "Runtime is " << duration.count() << " seconds" <<std::endl;
+    return 0;
 }
-
+    

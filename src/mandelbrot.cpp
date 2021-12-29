@@ -5,20 +5,20 @@
 
 
 
-#include "../external/qcustomplot/qcustomplot.h"
+// #include "../external/qcustomplot/qcustomplot.h"
 
 // QT5
-#include <QApplication>
-#include <QFileDialog>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QComboBox>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLCDNumber>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
-#include <QtWidgets/QMessageBox>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
+// #include <QApplication>
+// #include <QFileDialog>
+// #include <QtWidgets/QCheckBox>
+// #include <QtWidgets/QComboBox>
+// #include <QtWidgets/QHBoxLayout>
+// #include <QtWidgets/QLCDNumber>
+// #include <QtWidgets/QLabel>
+// #include <QtWidgets/QLineEdit>
+// #include <QtWidgets/QMessageBox>
+// #include <QtWidgets/QPushButton>
+// #include <QtWidgets/QSpinBox>
 
 #include "../include/fractals.hpp"
 
@@ -39,11 +39,11 @@ int main() {
 
     // To output the set (vector m_set) into a text file
     // std::ofstream file;
-	// file.open("m_set.txt");
-	// for(int i=0;i<m_set.size();++i){
-	// 	file<<m_set[i]<<" ";
-	// }
-	// file.close();
+	file.open("m_set.txt");
+	for(int i=0;i<m_set.size();++i){
+		file<<m_set[i]<<" ";
+	}
+	file.close();
 
     // QCustomPlot custom_plot;
     // custom_plot.addGraph();
